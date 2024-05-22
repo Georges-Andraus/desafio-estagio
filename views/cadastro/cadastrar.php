@@ -23,13 +23,8 @@ use yii\widgets\ActiveForm;
 <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
 <div class="form-group">
-    <?= Html::submitButton('Salvar', ['class' => 'btn btn-success']) ?>
+    <?= Html::submitButton('Cadastrar', ['class' => 'btn btn-success']) ?>
 </div>
 
 <?php ActiveForm::end(); ?>
 
-<script>
-    function confirmSubmit() {
-        return confirm("Você tem certeza que deseja enviar este formulário?");
-    }
-</script>
