@@ -14,15 +14,18 @@ class CadastroController extends Controller
     {
         $cadastroModel = new CadastroModel;
         $post = Yii::$app->request->post();
-        if($cadastroModel->load($post) && $cadastroModel->validate()){
-            return $this->render('confirmacao-cadastrar', [ 'model' => $cadastroModel]);
-        }
-        else{
-            return $this->render('cadastrar', [
-                'model' => $cadastroModel
-            ]);
+
+        if ($cadastroModel->load($post) && $cadastroModel->validate()) {
+            // Salvando os dados no banco de dados
+            if ($cadastroModel->save()) {
+                Yii::$app->session->setFlash('success', 'Profissional cadastrado com sucesso!');
+                return $this->redirect(['site/index']); // Redireciona para a página inicial ou outra página de sua escolha
+            } else {
+                Yii::$app->session->setFlash('error', 'Ocorreu um erro ao cadastrar o profissional.');
+            }
         }
 
+        return $this->render('cadastrar', ['model' => $cadastroModel]);
     }
     public function actionProfissional()
     {
