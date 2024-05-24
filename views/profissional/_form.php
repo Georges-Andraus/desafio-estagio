@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'numero_conselho')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'nascimento')->textInput() ?>
+    <?= $form->field($model, 'nascimento')->input('date') ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
