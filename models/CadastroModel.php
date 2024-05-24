@@ -2,48 +2,39 @@
 
 namespace app\models;
 
-use yii\db\ActiveRecord;
+use yii\base\Model;
 
-class CadastroModel extends ActiveRecord
+class CadastroModel extends Model
 {
-    public $id;
     public $nome;
-    public $email; // Adicione esta linha
+    public $email;
     public $conselho;
+    public $numero_conselho;
+    public $nascimento;
+    public $ativo;
 
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        // Define o nome da tabela no banco de dados associada a este modelo
-        return 'profissional';
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
-            [['id', 'nome', 'email', 'conselho'], 'required'],
-            ['id', 'integer'],
+            [['nome', 'email', 'conselho', 'numero_conselho', 'nascimento', 'ativo'], 'required'],
             ['email', 'email'],
             ['conselho', 'string', 'max' => 5],
-            ['nome', 'string', 'max' => 255]
+            ['numero_conselho', 'string', 'max' => 20],
+            ['nascimento', 'date', 'format' => 'php:Y-m-d'],
+            ['nome', 'string', 'max' => 255],
+            ['ativo', 'boolean'],
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'nome' => 'Nome completo',
+            'nome' => 'Nome Completo',
             'email' => 'Email',
-            'conselho' => 'Conselho'
+            'conselho' => 'Conselho',
+            'numero_conselho' => 'Número do Conselho',
+            'nascimento' => 'Data de Nascimento',
+            'ativo' => 'Ativo',
         ];
     }
 }

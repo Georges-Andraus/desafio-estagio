@@ -7,12 +7,8 @@ use yii\widgets\ActiveForm;
 <h2>Cadastro do profissional</h2>
 <hr>
 
-<?php $form = ActiveForm::begin([
-    'id' => 'cadastro-form',
-    'options' => ['onsubmit' => 'return confirmSubmit()'],
-]); ?>
+<?php $form = ActiveForm::begin(); ?>
 
-<?= $form->field($model, 'id')->textInput() ?>
 <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 <?= $form->field($model, 'conselho')->dropDownList([
     'CRM' => 'CRM',
@@ -20,7 +16,10 @@ use yii\widgets\ActiveForm;
     'CRN' => 'CRN',
     'COREN' => 'COREN',
 ], ['prompt' => 'Selecione um conselho']) ?>
+<?= $form->field($model, 'numero_conselho')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'nascimento')->input('date') ?>
 <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'ativo')->checkbox() ?>
 
 <div class="form-group">
     <?= Html::submitButton('Cadastrar', ['class' => 'btn btn-success']) ?>
@@ -28,3 +27,8 @@ use yii\widgets\ActiveForm;
 
 <?php ActiveForm::end(); ?>
 
+<script>
+    function confirmSubmit() {
+        return confirm("Você tem certeza que deseja cadastrar este profissional?");
+    }
+</script>

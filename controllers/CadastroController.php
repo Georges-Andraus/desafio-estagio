@@ -9,27 +9,32 @@ use yii\web\Controller;
 
 class CadastroController extends Controller
 {
-
     public function actionCadastrar()
     {
-        $cadastroModel = new CadastroModel;
-        $post = Yii::$app->request->post();
+        $cadastroModel = new CadastroModel();
+        if ($cadastroModel->load(Yii::$app->request->post()) && $cadastroModel->validate()) {
+            $profissional = new Profissional();
+            $profissional->nome = $cadastroModel->nome;
+            $profissional->email = $cadastroModel->email;
+            $profissional->conselho = $cadastroModel->conselho;
+            $profissional->numero_conselho = $cadastroModel->numero_conselho;
+            $profissional->nascimento = $cadastroModel->nascimento;
+            $profissional->status = $cadastroModel->status;
 
-        if ($cadastroModel->load($post) && $cadastroModel->validate()) {
-            // Salvando os dados no banco de dados
-            if ($cadastroModel->save()) {
-                Yii::$app->session->setFlash('success', 'Profissional cadastrado com sucesso!');
-                return $this->redirect(['site/index']); // Redireciona para a página inicial ou outra página de sua escolha
-            } else {
-                Yii::$app->session->setFlash('error', 'Ocorreu um erro ao cadastrar o profissional.');
+            if ($profissional->save()) {
+                return $this->redirect(['confirmacao-cadastrar', 'model' => $cadastroModel]);
             }
         }
-
         return $this->render('cadastrar', ['model' => $cadastroModel]);
     }
+
     public function actionProfissional()
     {
-        $profissional = Profissional::find()->orderBy('id')->all();
-        echo '<pre>' ; print_r($profissional);
+        $profissionais = Profissional::find()->orderBy('id')->all();
+        foreach ($profissionais as $profissional) {
+            echo '<pre>';
+            print_r($profissional->attributes);
+            echo '</pre>';
+        }
     }
 }
