@@ -18,7 +18,7 @@ class CadastroModel extends Model
         return [
             [['nome', 'email', 'conselho', 'numero_conselho', 'nascimento', 'ativo'], 'required'],
             ['email', 'email'],
-            ['conselho', 'string', 'max' => 5],
+            ['conselho', 'in', 'range' => ['CRM', 'CRO', 'CRN', 'COREN']],
             ['numero_conselho', 'string', 'max' => 20],
             ['nascimento', 'date', 'format' => 'php:Y-m-d'],
             ['nome', 'string', 'max' => 255],

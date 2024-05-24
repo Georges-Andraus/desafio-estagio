@@ -17,8 +17,8 @@ class ProfissionalSearch extends Profissional
     public function rules()
     {
         return [
-            [['id', 'ativo'], 'integer'],
-            [['conselho', 'nome', 'numero_conselho', 'nascimento', 'email'], 'safe'],
+            [['id'], 'integer'],
+            [['nome', 'numero_conselho', 'nascimento', 'email', 'conselho'], 'safe'],
         ];
     }
 
@@ -60,11 +60,9 @@ class ProfissionalSearch extends Profissional
         $query->andFilterWhere([
             'id' => $this->id,
             'nascimento' => $this->nascimento,
-            'ativo' => $this->ativo,
         ]);
 
-        $query->andFilterWhere(['like', 'conselho', $this->conselho])
-            ->andFilterWhere(['like', 'nome', $this->nome])
+        $query->andFilterWhere(['like', 'nome', $this->nome])
             ->andFilterWhere(['like', 'numero_conselho', $this->numero_conselho])
             ->andFilterWhere(['like', 'email', $this->email]);
 
