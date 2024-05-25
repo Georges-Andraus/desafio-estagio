@@ -1,53 +1,69 @@
 <?php
-
 /** @var yii\web\View $this */
 
-$this->title = 'My Yii Application';
+$this->title = 'Cadastro de Profissionais de Saúde';
 ?>
-<div class="site-index">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $this->title ?></title>
+    <style>
+        /* Estilos para o fundo degradê animado */
+        body {
+            background: linear-gradient(to right, #00FA9A, #008B8B); /* Verde escuro para verde claro */
+            animation: gradientAnimation 10s infinite alternate;
+        }
 
-    <div class="jumbotron text-center bg-transparent mt-5 mb-5">
-        <h1 class="display-4">Congratulations!</h1>
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        /* Estilos para o conteúdo da página */
+        .container {
+            margin-top: 100px;
+            text-align: center;
+            color: #fff;
+        }
 
-        <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
 
-    <div class="body-content">
+        p {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
 
-        <div class="row">
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
+        .btn {
+            font-size: 24px;
+            padding: 10px 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Bem-vindo ao Cadastro de Profissionais de Saúde</h1>
+    <p>Aqui você pode cadastrar e gerenciar profissionais de saúde.</p>
+    <a class="btn" href="<?= Yii::$app->urlManager->createUrl(['/profissional/index']) ?>">Comece agora</a>
 
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4 mb-3">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
 </div>
+</body>
+</html>
