@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'conselho')->dropDownList(['CRN' => 'CRN', 'CRM' => 'CRM', 'CRO' => 'CRO' , 'COREN' => 'COREN']) ?>
+    <?= $form->field($model, 'conselho')->dropDownList(['CRN' => 'CRN', 'CRM' => 'CRM', 'CRO' => 'CRO' , 'COREN' => 'COREN'],['prompt' => 'Selecione o Conselho'])  ?>
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
@@ -41,9 +41,9 @@ use yii\widgets\ActiveForm;
 </div>
 
 <script>
-function toggleStatus(value) {
-    document.getElementById("profissional-status").value = value;
-    document.querySelector('input[name="active_checkbox"]').checked = (value == 1);
-    document.querySelector('input[name="inactive_checkbox"]').checked = (value == 0);
-}
+    function toggleStatus(value) {
+        document.getElementById("profissional-status").value = value;
+        document.querySelector('input[name="active_checkbox"]').checked = (value == 1);
+        document.querySelector('input[name="inactive_checkbox"]').checked = (value == 0);
+    }
 </script>
