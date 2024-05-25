@@ -20,7 +20,8 @@ features to your application.
 INFO
 ----
 
-Sistema CRUD básico de cadastro de profissionais da saúde feito utilizando PHP e o framework Yii2, em que a conexão do banco de dados (MySQL) e servidor Apache implementados via XAMPP.
+
+Basic CRUD system for registering healthcare professionals using PHP and the Yii2 framework, in which the database connection (MySQL) and Apache server implemented via XAMPP.
 
 
 
