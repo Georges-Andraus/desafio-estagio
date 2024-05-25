@@ -6,10 +6,7 @@
     <br>
 </p>
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](https://www.yiiframework.com/) application best for
-rapidly creating small projects.
-
-Basic CRUD system for registering healthcare professionals using PHP and the Yii2 framework, in which the database connection (MySQL) and Apache server implemented via XAMPP.
+MY project is a basic CRUD system for registering healthcare professionals using PHP and the Yii2 framework, in which the database connection (MySQL) and Apache server implemented via XAMPP.
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
