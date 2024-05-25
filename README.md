@@ -9,19 +9,12 @@
 Yii 2 Basic Project Template is a skeleton [Yii 2](https://www.yiiframework.com/) application best for
 rapidly creating small projects.
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
+Basic CRUD system for registering healthcare professionals using PHP and the Yii2 framework, in which the database connection (MySQL) and Apache server implemented via XAMPP.
 
 [![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![build](https://github.com/yiisoft/yii2-app-basic/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
 
-INFO
-----
-
-
-Basic CRUD system for registering healthcare professionals using PHP and the Yii2 framework, in which the database connection (MySQL) and Apache server implemented via XAMPP.
 
 
 
