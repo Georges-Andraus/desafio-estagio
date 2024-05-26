@@ -8,7 +8,7 @@ class Profissional extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'cadastro.profissional';
+        return 'profissional';
     }
 
     public function rules()
@@ -20,7 +20,7 @@ class Profissional extends ActiveRecord
             ['numero_conselho', 'string', 'max' => 20],
             ['nascimento', 'date', 'format' => 'php:Y-m-d'],
             ['nome', 'string', 'max' => 255],
-            ['status', 'in', 'range' => [0, 1]], // 0 for inactive, 1 for active
+            ['status', 'in', 'range' => [0, 1]],
         ];
     }
 
@@ -34,5 +34,11 @@ class Profissional extends ActiveRecord
             'nascimento' => 'Data de Nascimento',
             'status' => 'Status',
         ];
+    }
+
+    public function getClinicas()
+    {
+        return $this->hasMany(Clinica::className(), ['id' => 'clinica_id'])
+            ->viaTable('profissional_clinica', ['profissional_id' => 'id']);
     }
 }

@@ -3,11 +3,11 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/** @var yii\web\View $this */
-/** @var app\models\Profissional $model */
+/* @var $this yii\web\View */
+/* @var $model app\models\Profissional */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Profissionals', 'url' => ['index']];
+$this->title = $model->nome;
+$this->params['breadcrumbs'][] = ['label' => 'Profissionais', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -16,30 +16,46 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Atualizar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Excluir', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Você tem certeza que deseja excluir este profissional?',
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Criar Clínica', ['clinica/create', 'profissional_id' => $model->id], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            'conselho',
             'nome',
+            'email:email',
+            'conselho',
             'numero_conselho',
             'nascimento',
             [
                 'attribute' => 'status',
                 'value' => $model->status ? 'Ativo' : 'Inativo',
             ],
-            'email:email',
         ],
     ]) ?>
 
+    <h2>Clínicas Associadas</h2>
+    <ul>
+        <?php foreach ($model->clinicas as $clinica): ?>
+            <li>
+                <?= Html::encode($clinica->nome) ?>
+                <?= Html::a('Excluir', ['profissional/delete-clinica', 'id' => $model->id, 'clinica_id' => $clinica->id], [
+                    'class' => 'btn btn-danger btn-xs',
+                    'data' => [
+                        'confirm' => 'Você tem certeza que deseja excluir esta clínica associada a este profissional?',
+                        'method' => 'post',
+                    ],
+                ]) ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 </div>
