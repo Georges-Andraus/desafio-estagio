@@ -1,0 +1,29 @@
+nome da tabela: cadastro
+
+comandos utilizados:
+
+CREATE TABLE clinica (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    cnpj VARCHAR(14) NOT NULL UNIQUE
+);
+
+CREATE TABLE profissional (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    conselho ENUM('CRM', 'CRO', 'CRN', 'COREN') NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    numero_conselho VARCHAR(20) NOT NULL,
+    nascimento DATE NOT NULL,
+    ativo TINYINT(1) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    status ENUM('ativo', 'inativo') NOT NULL
+);
+
+
+CREATE TABLE profissional_clinica (
+    profissional_id INT NOT NULL,
+    clinica_id INT NOT NULL,
+    PRIMARY KEY (profissional_id, clinica_id),
+    FOREIGN KEY (profissional_id) REFERENCES profissional(id),
+    FOREIGN KEY (clinica_id) REFERENCES clinica(id)
+);

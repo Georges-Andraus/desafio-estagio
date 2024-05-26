@@ -41,6 +41,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Info', 'url' => ['/site/about']],
+            ['label' => 'ProfessionalGrid', 'url' => ['/profissional/index']],
         ]
     ]);
     NavBar::end();
