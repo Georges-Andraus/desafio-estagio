@@ -64,6 +64,8 @@ $this->params['breadcrumbs'][] = $this->title;
         botão "comece agora". Ao clicar, o usuário é redirecionado para a aba responsável por fazer o cadastro
         em si. Finalizado o cadastro, as informações do profissional serão salvas em um banco de dados no MySQL,
         além disso, será possível visualizar, deletar ou atualizar os dados dos profissionais já cadastrados.
+        Além disso, agora podemos criar clínicas assim como criamos profissionais e relacionar essas duas entidades
+        sendo mostrado todas as informações na grade de visualização do profissional.
     </p>
 
 </div>
