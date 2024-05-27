@@ -59,13 +59,14 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </div>
 </main>
 
-<footer id="footer" class="mt-auto py-2 bg-light"> <!-- Reduzi o valor do padding para py-2 -->
+<footer id="footer" class="mt-auto py-2 bg-dark"> <!-- Mantive o fundo escuro -->
     <div class="container">
-        <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; Georges Andraus <?= date('Y') ?></div>
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start text-white">&copy; Georges Andraus <?= date('Y') ?></div> <!-- Adicionei a classe text-white -->
         </div>
     </div>
 </footer>
+
 
 <?php $this->endBody() ?>
 </body>
