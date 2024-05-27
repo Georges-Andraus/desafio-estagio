@@ -6,7 +6,7 @@
     <br>
 </p>
 
-MY project is a basic CRUD system for registering healthcare professionals using PHP and the Yii2 framework, in which the database connection (MySQL) and Apache server implemented via XAMPP.
+Meu projeto é um sistema CRUD básico para cadastro de profissionais de saúde utilizando PHP e o framework Yii2, no qual a conexão com banco de dados (MySQL) e servidor Apache implementado via XAMPP.
 
 
 REQUIREMENTS
