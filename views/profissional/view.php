@@ -59,4 +59,3 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php endforeach; ?>
     </ul>
 </div>
-
