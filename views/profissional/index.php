@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Profissional', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Profissional', ['create'], ['class' => 'btn btn-success']) ?>
         <?= Html::a('Criar Clínica', ['clinica/create'], ['class' => 'btn btn-primary']) ?> <!-- Botão para criar clínica -->
     </p>
 
