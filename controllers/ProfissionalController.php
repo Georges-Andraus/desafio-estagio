@@ -7,6 +7,7 @@ use app\models\ProfissionalSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\controllers\Clinica;
 
 /**
  * ProfissionalController implements the CRUD actions for Profissional model.
@@ -90,7 +91,21 @@ class ProfissionalController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post())) {
-            $model->status = $this->request->post('Profissional')['status'];
+            // Verifica se as clínicas foram selecionadas no formulário
+            $clinicasSelecionadas = $this->request->post('Profissional')['clinicas'];
+
+            // Limpa todas as relações existentes com clínicas
+            $model->unlinkAll('clinicas', true);
+
+            // Adiciona as novas relações com as clínicas selecionadas
+            foreach ($clinicasSelecionadas as $clinicaId) {
+                $clinica = \app\models\Clinica::findOne($clinicaId);
+                if ($clinica) {
+                    $model->link('clinicas', $clinica);
+                }
+            }
+
+            // Salva o modelo de profissional
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -130,5 +145,16 @@ class ProfissionalController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    public function actionDeleteClinica($id, $clinica_id)
+    {
+        $profissional = $this->findModel($id);
+        $clinica = \app\models\Clinica::findOne($clinica_id);
+
+        if ($profissional && $clinica) {
+            $profissional->unlink('clinicas', $clinica, true);
+        }
+
+        return $this->redirect(['view', 'id' => $id]);
     }
 }

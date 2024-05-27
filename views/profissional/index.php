@@ -26,31 +26,33 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+
             'id',
-            'conselho',
             'nome',
+            'email',
+            'conselho',
             'numero_conselho',
-            [
-                'attribute' => 'nascimento',
-                'value' => function($model) {
-                    return Yii::$app->formatter->asDate($model->nascimento, 'dd-MM-yyyy');
-                },
-            ],
+            'nascimento',
             [
                 'attribute' => 'status',
                 'value' => function($model) {
                     return $model->status ? 'Ativo' : 'Inativo';
-                },
+                }
             ],
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, $model, $key, $index) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                },
-                'template' => '{view} {update} {delete}', // Adicionando template para definir as ações desejadas
+                'label' => 'Clínicas',
+                'value' => function ($model) {
+                    $clinicas = [];
+                    foreach ($model->clinicas as $clinica) {
+                        $clinicas[] = $clinica->nome;
+                    }
+                    return implode(', ', $clinicas);
+                }
             ],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
 
 
 </div>

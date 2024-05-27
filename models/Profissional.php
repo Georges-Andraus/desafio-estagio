@@ -14,7 +14,7 @@ class Profissional extends ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'email', 'conselho', 'numero_conselho', 'nascimento'], 'required'],
+            [['nome', 'email', 'conselho', 'numero_conselho', 'nascimento', 'status'], 'required'],
             ['email', 'email'],
             ['conselho', 'in', 'range' => ['CRM', 'CRO', 'CRN', 'COREN']],
             ['numero_conselho', 'string', 'max' => 20],

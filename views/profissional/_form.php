@@ -26,7 +26,8 @@ $clinicas = ArrayHelper::map(Clinica::find()->all(), 'id', 'nome');
 
     <?= $form->field($model, 'nascimento')->input('date') ?>
 
-    <?= $form->field($model, 'status')->checkbox() ?>
+    <?= $form->field($model, 'status')->checkbox(['label' => 'Inativo']) ?>
+    <?= $form->field($model, 'status')->checkbox(['label' => 'Ativo']) ?>
 
     <?= $form->field($model, 'clinicas')->listBox($clinicas, ['multiple' => true]) ?>
 
