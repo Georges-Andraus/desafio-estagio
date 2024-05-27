@@ -16,6 +16,8 @@ REQUIREMENTS
 • Framework Yii2
 • MySQL
 
+Criei um arquivo .txt chamado "DadosBD.txt" nele estao o script SQL q utilizei para criar as tabelas.
+
 [![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-basic.svg)](https://packagist.org/packages/yiisoft/yii2-app-basic)
 [![build](https://github.com/yiisoft/yii2-app-basic/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-basic/actions?query=workflow%3Abuild)
