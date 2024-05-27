@@ -24,18 +24,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'tableOptions' => ['class' => 'table table-striped table-bordered'], // Adicionando classes de estilo para a tabela
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            // Removendo a coluna de serialização
+            // ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'nome',
             'email',
             'conselho',
             'numero_conselho',
-            'nascimento',
+            [
+                'attribute' => 'nascimento',
+                'value' => function ($model) {
+                    return Yii::$app->formatter->asDate($model->nascimento, 'dd-MM-yyyy'); // Formatando a data
+                }
+            ],
             [
                 'attribute' => 'status',
-                'value' => function($model) {
+                'value' => function ($model) {
                     return $model->status ? 'Ativo' : 'Inativo';
                 }
             ],
@@ -49,10 +56,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     return implode(', ', $clinicas);
                 }
             ],
-            ['class' => 'yii\grid\ActionColumn'],
+            // Coluna de ações
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'contentOptions' => ['style' => 'width:100px;'], // Definindo largura fixa para a coluna de ações
+                'headerOptions' => ['style' => 'width:100px;'], // Definindo largura fixa para o cabeçalho da coluna de ações
+            ],
         ],
     ]); ?>
-
 
 
 </div>
