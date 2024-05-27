@@ -30,12 +30,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'conselho',
             'nome',
             'numero_conselho',
-            'nascimento',
+            [
+                'attribute' => 'nascimento',
+                'value' => function($model) {
+                    return Yii::$app->formatter->asDate($model->nascimento, 'dd-MM-yyyy');
+                },
+            ],
             [
                 'attribute' => 'status',
                 'value' => function($model) {
                     return $model->status ? 'Ativo' : 'Inativo';
-                }
+                },
             ],
             [
                 'class' => ActionColumn::className(),

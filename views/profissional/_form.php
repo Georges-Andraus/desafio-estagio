@@ -1,49 +1,39 @@
 <?php
-
-use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
+use app\models\Clinica;
 use yii\widgets\ActiveForm;
+use yii\helpers\Html;
 
-/** @var yii\web\View $this */
-/** @var app\models\Profissional $model */
-/** @var yii\widgets\ActiveForm $form */
+/* @var $this yii\web\View */
+/* @var $model app\models\Profissional */
+/* @var $form yii\widgets\ActiveForm */
+
+$clinicas = ArrayHelper::map(Clinica::find()->all(), 'id', 'nome');
+
 ?>
 
 <div class="profissional-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'conselho')->dropDownList(['CRN' => 'CRN', 'CRM' => 'CRM', 'CRO' => 'CRO' , 'COREN' => 'COREN'],['prompt' => 'Selecione o Conselho'])  ?>
-
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'conselho')->dropDownList(['CRM' => 'CRM', 'CRO' => 'CRO', 'CRN' => 'CRN', 'COREN' => 'COREN'], ['prompt' => 'Selecione o Conselho']) ?>
 
     <?= $form->field($model, 'numero_conselho')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'nascimento')->input('date') ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'status')->checkbox() ?>
 
-    <?= $form->field($model, 'status')->hiddenInput()->label(false) ?>
-
-    <div class="form-group">
-        <label>Status</label>
-        <div>
-            <?= Html::checkbox('active_checkbox', $model->status == 1, ['label' => 'Ativo', 'onclick' => 'toggleStatus(1)']) ?>
-            <?= Html::checkbox('inactive_checkbox', $model->status == 0, ['label' => 'Inativo', 'onclick' => 'toggleStatus(0)']) ?>
-        </div>
-    </div>
+    <?= $form->field($model, 'clinicas')->listBox($clinicas, ['multiple' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Salvar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
-
-<script>
-    function toggleStatus(value) {
-        document.getElementById("profissional-status").value = value;
-        document.querySelector('input[name="active_checkbox"]').checked = (value == 1);
-        document.querySelector('input[name="inactive_checkbox"]').checked = (value == 0);
-    }
-</script>
